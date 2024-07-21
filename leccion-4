@@ -1,0 +1,71 @@
+import discord
+import os
+import random
+from discord.ext import commands
+
+TOKEN = 'EL TOKEN DE DISCORD'
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+#explicacion
+@bot.command()
+async def comandos(ctx):
+    help_text = (
+        "Estos son los comandos disponibles:\n"
+        "1. `$comandos` - Explica los comandos del bot.\n"
+        "2. `$hobbies` - mejores hobbies con su categoria .\n"
+        "3. `$mem` - pone un meme.\n"
+        "4. `$tareas` - mejores paginar para hacer tareas` -.\n"
+        "5. `$musica` - top 5 musica mas escuchada de:` -.\n"
+    )
+    await ctx.send(help_text)
+
+#hobbies
+bot.command()
+async def hobbies(ctx):
+    hobbies = (
+        "Aquí tienes algunos hobbies interesantes sobre:\n"
+        "1.Creativos\n"
+        "2.Deportivas\n"
+        "3.Intelectuales:\n"
+        "4.Tecnológicas:\n"
+        "5.videojuegos:\n"
+        "Cual quisieras saber?\n"
+
+    )
+
+bot.command()
+async def Creativos(ctx):
+    Creativos = (
+        "Aquí tienes algunos hobbies Creativos:\n"
+        "1.Dibujo y pintura:puedes probar Procreate/Concepts/Autodesk SketchBook.\n"
+        "2.Fotografía:ProCamera(ios)/Camera FV-5.--edicion de las fotos:Adobe Lightroom\n"
+    )
+
+bot.command()
+async def Deportivas(ctx):
+    Creativos = (
+        "Aquí tienes algunos hobbies Deportivos:\n"
+        "1.Fútbol.\n"
+        "2.Basket\n"
+        "2.Natación.\n"
+
+    )
+
+# comando para memes
+@bot.command()
+async def mem(ctx):
+    img_mem = random.choice(os.listdir('imagenes'))
+    with open(f'imagenes/{img_mem}', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+#tiempo de descomposición de un determinado objeto doméstico.
+
+
+TOKEN = 'EL TOKEN DE DISCORD'
